@@ -16,5 +16,10 @@ func main() {
 	app := fiber.New()
 
 	setupRoutes(app)
-	app.Listen(8080)
+	port := os.Getenv("PORT")
+
+    	if port == "" {
+        	log.Fatal("$PORT must be set")
+    	}
+	app.Listen(port)
 }
